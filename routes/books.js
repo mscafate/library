@@ -56,11 +56,11 @@ router.post('/', async (req, res) => {
         pageCount: parseInt(req.body.pageCount),
         description: req.body.description
     })
-    saveCover(book, req.body.cover)
+
     try {
+        saveCover(book, req.body.cover) 
         const newBook = await book.save()
         res.redirect(`books/${newBook.id}`)
-
         
     } catch {
           
@@ -149,11 +149,12 @@ async function renderFormPage(res, book, form, hasError = false) {
         const authors = await Author.find({})
         const params = {
             authors: authors,
-            book: book
+            book: book,
+            errorMessage: '' //new
         }
         if (hasError) {
             if (form === 'edit') {
-            params.errorMessage = 'Error Editing Book'
+            params.errorMessage = 'Error Updating Book'
             }
             else {
                 params.errorMessage = 'Error Creating Book'
