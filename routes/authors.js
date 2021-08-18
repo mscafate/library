@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
     })
     let locals = { 
             author: author,
-            errorMessage: 'Error creating Author' 
+            errorMessage: 'Error creating author' 
     }
     try{
         const newAuthor = await author.save()
@@ -72,7 +72,7 @@ router.get('/:id/edit', async (req, res) => {
     }
 })
 
-//edit
+//edit author in edit page
 router.put('/:id', async (req, res) => {
     let author
     try{
